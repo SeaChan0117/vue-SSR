@@ -5,7 +5,7 @@ import Home from "../pages/Home"
 Vue.use(VueRouter)
 
 export const createRouter = () => {
-    const router = new VueRouter({
+    return  new VueRouter({
         mode: 'history', // 兼容前后端
         routes: [
             {
@@ -21,7 +21,7 @@ export const createRouter = () => {
             {
                 path: '*',
                 name: 'error404',
-                component: () => import('@/pages/404')
+                component: () => import('@/pages/Page-404')
             }
         ]
     })

@@ -51,6 +51,7 @@ module.exports = (server, callback) => {
         'webpack-hot-middleware/client?quiet=true&reload=true', // 和服务端交互处理热更新的一个脚本
         clientConfig.entry.app
     ]
+    // clientConfig.output.filename = '[name].js' // 热更新模式下确保一致的 hash
     const clientCompiler = webpack(clientConfig)
     const clientDevMiddleware = devMiddleware(clientCompiler, {
         publicPath: clientConfig.output.publicPath,
