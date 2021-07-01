@@ -27,16 +27,20 @@ if (isProd) {
     })
 }
 
-const render = (req, res) => {
-    renderer.renderToString({
-        title: "vue-ssr",
-        meta: `<meta name="description" content="我是 vue ssr">`
-    }, (err, html) => {
-        if (err) {
-            res.status(500).end('Internal Server Error.')
-        }
+const render = async (req, res) => {
+    try {
+        const html = await renderer.renderToString({
+            title: "vue-ssr",
+            meta: `<meta name="description" content="我是 vue ssr">`,
+            url: req.url
+        })
+
+        res.setHeader('Content-Type', 'text/html; charset=utf8')
         res.end(html)
-    })
+    } catch (e) {
+        console.log(e)
+        res.status(500).end('Internal Server Error.123')
+    }
 }
 
 server.get('*', isProd
