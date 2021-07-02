@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    {{{ meta }}}
-    <title>{{ title }}</title>
+    {{{ meta.inject().title.text() }}}
+    {{{ meta.inject().meta.text() }}}
 </head>
 <body>
 <!--vue-ssr-outlet-->

@@ -5,7 +5,12 @@ import { createApp } from './app'
 
 // 客户端特定引导逻辑……
 
-const { app, router } = createApp()
+const { app, router, store } = createApp()
+
+// 客户端将服务端设置到 widow 的状态配置到客户端
+if (window['__INITIAL_STATE__']) {
+    store.replaceState(window['__INITIAL_STATE__'])
+}
 
 router.onReady(() => {
     app.$mount('#app')
